@@ -1,0 +1,42 @@
+html, body {
+	margin: 0px;
+	background: white;
+}
+
+.main {
+	margin-top: 1%;
+	padding-left: 2%;
+	text-align: center;
+}
+
+.formheader {
+	font-size: x-large;
+	margin-top: 18px;
+	padding: 1px;
+	padding-left: 2%;
+}
+
+.header {
+	margin-top: 18px;
+}
+
+table {
+	width: 100%;
+}
+
+.formtable1 {
+	margin-left: 8%;
+	margin-right: 10%;
+}
+
+input[type=text], select {
+	width: 220px;
+	padding: 9px 9px;
+	margin: 8px 0;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style-type: none;
+}
