@@ -6,13 +6,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.v2stech.payroll.dao.EmployeeDao;
-import com.v2stech.payroll.exception.InvalidCredentialException;
-import com.v2stech.payroll.exception.InvalidFieldException;
-import com.v2stech.payroll.model.UserCredentialModel;
 import com.v2stech.payroll.model.UserData;
 
 @Service
@@ -26,9 +21,5 @@ public class EmployeeService {
 		userdataList = employeeDaoImpl.getListAfterLogin();
 		return userdataList;
 	}
-
-	
-	
-	
 
 }

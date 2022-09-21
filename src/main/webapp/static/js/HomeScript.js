@@ -60,7 +60,7 @@ $("#login").on("click", function() {
 				window.location.href = "http://localhost:8080/payroll_Management_System/employeePage/"+email;
 			}
 			else {
-				window.location.href = "http://localhost:8080/payroll_Management_System/adminPage"
+				window.location.href = "http://localhost:8080/payroll_Management_System/adminPage/"+email
 			}
 		},
 		error: function(message) {

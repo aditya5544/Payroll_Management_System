@@ -40,7 +40,7 @@ public class EmployeeController {
 	 * @work Back to Employee dashboard from "EmployeeDataTableFormat" Page
 	 * @return modelAndView
 	 */
-	@GetMapping("/employeePage/backToEmployeeDashboard")
+	@GetMapping("/employeePage/logout")
 	public ModelAndView backToEmployeeDashboard() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("LoginPage");

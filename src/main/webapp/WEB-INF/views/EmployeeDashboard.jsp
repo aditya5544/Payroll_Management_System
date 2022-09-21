@@ -23,6 +23,7 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
+<h4 style="float:right">hi ${sessionUser.username} </h4>
 <a class="btn btn-outline-light btn-lg px-2 float-right" type="submit" href="logout">Log Out</a>
 	<section class="vh-80 gradient-custom">
 		<div class="container px-2 py-4 h-50">

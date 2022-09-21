@@ -1,6 +1,7 @@
 package com.v2stech.payroll.service;
 
 import java.sql.SQLException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,7 @@ import com.v2stech.payroll.model.PayslipForDatabase;
 import com.v2stech.payroll.model.UserCredentialModel;
 
 @Service
+
 public class HomeService {
 
 	@Autowired
@@ -28,25 +30,20 @@ public class HomeService {
 	
 	public String loginCreadShowDashboard(UserCredentialModel userCredModel, BindingResult result)
 			throws SQLException, ClassNotFoundException, InvalidCredentialException, InvalidFieldException {
-		UserCredentialModel creadentialResult = employeeDaoImpl.loginCredentials(userCredModel);
-		UserCredentialModel userDataFromTable;
-		
-		
-		
-		
-//		if (creadentialResult) {
-//			userDataFromTable = employeeDaoImpl.getDataAfterLogin(userCredModel);
-//			if (userDataFromTable.getUsername().equals(userCredModel.getUsername())
-//					&& userDataFromTable.getPassword().equals(userCredModel.getPassword())) {
-//				if (userDataFromTable.getUserType().equalsIgnoreCase("user")) {
-//					return "e";
-//				} else {
-//					return "a";
-//				}
-//			}
-//		} else {
-//			throw new InvalidCredentialException("Invalid Credentials");
-//		}
+	boolean creadentialResult = employeeDaoImpl.loginCredentials(userCredModel);
+		if (creadentialResult) {
+			UserCredentialModel userDataFromTable = employeeDaoImpl.UserCredentialModel(userCredModel);
+			if (userDataFromTable.getUsername().equals(userCredModel.getUsername())
+					&& userDataFromTable.getPassword().equals(userCredModel.getPassword())) {
+				if (userDataFromTable.getUserType().equalsIgnoreCase("user")) {
+					return "e";
+				} else {
+					return "a";
+				}
+			}
+		} else {
+			throw new InvalidCredentialException("Invalid Credentials");
+		}
 		return null;
 	}
 

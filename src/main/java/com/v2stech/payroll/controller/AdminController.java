@@ -251,20 +251,20 @@ public class AdminController {
 	public ModelAndView backToAdminSearchPage(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
-		
 		modelAndView.setViewName("AdminSearch");
 		return modelAndView;
 	}
 
-	
 	/**
 	 * @work method used to logout and go back to login page
 	 * @param modelAndView
 	 * @return modelAndView
 	 */
-	@GetMapping("employeePage/logout")
+	@GetMapping("adminPage/employeePage/logout")
 	public ModelAndView backToLoginPage(ModelAndView modelAndView) {
 		modelAndView.setViewName("LoginPage");
 		return modelAndView;
 	}
+
+	
 }

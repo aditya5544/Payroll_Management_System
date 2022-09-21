@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.v2stech.payroll.dao.EmployeeDao;
@@ -25,16 +26,16 @@ import com.v2stech.payroll.service.HomeService;
  * @author Aditya Kadam
  */
 @RestController
+@SessionAttributes("sessionUser")
 public class HomeController {
-
-	
 
 	@Autowired
 	private EmployeeDao employeeDaoImpl;
 
 	@Autowired
 	private HomeService homeServiceImpl;
-
+	
+	UserCredentialModel usermodel ;
 
 	/**
 	 * @work Method used to Display login Page.
@@ -46,23 +47,28 @@ public class HomeController {
 		modelAndView.setViewName("LoginPage");
 		return modelAndView;
 	}
-	
-
-	
 
 	/**
-	 * @work Method used to display Admin dashboard after matching admin credentilas.
+	 * @work Method used to display Admin dashboard after matching admin
+	 *       credentilas.
 	 * @param modelAndView
 	 * @return
+	 * @throws SQLException
+	 * @throws ClassNotFoundException
 	 */
-	@GetMapping("/adminPage")
-	public ModelAndView adminDashBoardPage(ModelAndView modelAndView) {
+	@RequestMapping("/adminPage/{email}")
+	public ModelAndView adminDashBoardPage(ModelAndView modelAndView, UserCredentialModel userModel,
+			@PathVariable String email) throws ClassNotFoundException, SQLException {
+		usermodel = employeeDaoImpl.getData(email);
+		modelAndView.addObject("sessionUser", usermodel);
 		modelAndView.setViewName("AdminDashboard");
 		return modelAndView;
 	}
-
+	
+	
 	/**
-	 * @work method used to display EMPLOYEE DASHBOARD PAGE  after matching employee credentials.
+	 * @work method used to display EMPLOYEE DASHBOARD PAGE after matching employee
+	 *       credentials.
 	 * @param email
 	 * @param modelAndView
 	 * @return modelAndView
@@ -73,15 +79,14 @@ public class HomeController {
 	public ModelAndView customerDetailsPage(@PathVariable String email, ModelAndView modelAndView)
 			throws ClassNotFoundException, SQLException {
 		UserCredentialModel usermodel = employeeDaoImpl.getData(email);
+		modelAndView.addObject("sessionUser", usermodel);
 		modelAndView.addObject("userData", usermodel);
 		modelAndView.setViewName("EmployeeDashboard");
 		return modelAndView;
 	}
 
-
-	
 	/**
-	 * @work method use for login credentilas 
+	 * @work method use for login credentilas
 	 * @param userCredModel
 	 * @param result
 	 * @return String

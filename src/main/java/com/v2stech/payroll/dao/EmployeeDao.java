@@ -9,11 +9,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.v2stech.payroll.model.UserCredentialModel;
 import com.v2stech.payroll.model.UserData;
 
 @Repository
+@SessionAttributes("sessionUser")
 public class EmployeeDao {
 
 	@Autowired
@@ -25,39 +27,37 @@ public class EmployeeDao {
 	Connection connection;
 
 
-//	public Boolean loginCredentials(UserCredentialModel userCredential) throws SQLException, ClassNotFoundException {
-//		PreparedStatement preparedStatement = genericDaoImpl.getPreparestatement();
-//		ResultSet resultSet = genericDaoImpl.getResultSet();
-//		preparedStatement = connection
-//				.prepareStatement("select * from employee where employee_email=? and employee_password=?");
-//		preparedStatement.setString(1, userCredential.getUsername());
-//		preparedStatement.setString(2, userCredential.getPassword());
-//		System.out.println("User Validate successfully");
-//		resultSet = preparedStatement.executeQuery();
-//		this.username = userCredential.getUsername();
-//		if (!resultSet.isBeforeFirst()) {
-//			return false;
-//		} else {
-//			return true;
-//		}
-//	}
-//	
-	
-	
-	
-	public UserCredentialModel loginCredentials(UserCredentialModel userCredential) throws SQLException, ClassNotFoundException {
+	public Boolean loginCredentials(UserCredentialModel userCredential) throws SQLException, ClassNotFoundException {
 		PreparedStatement preparedStatement = genericDaoImpl.getPreparestatement();
 		ResultSet resultSet = genericDaoImpl.getResultSet();
 		preparedStatement = connection
 				.prepareStatement("select * from employee where employee_email=? and employee_password=?");
 		preparedStatement.setString(1, userCredential.getUsername());
 		preparedStatement.setString(2, userCredential.getPassword());
+		System.out.println("User Validate successfully");
 		resultSet = preparedStatement.executeQuery();
 		this.username = userCredential.getUsername();
-		return userCredential;
+		if (!resultSet.isBeforeFirst()) {
+			return false;
+		} else {
+			return true;
+		}
 	}
+	
 
-	public UserCredentialModel getDataAfterLogin(UserCredentialModel userCredImpl)
+//	public UserCredentialModel loginCredentials(UserCredentialModel userCredential) throws SQLException, ClassNotFoundException {
+//		PreparedStatement preparedStatement = genericDaoImpl.getPreparestatement();
+//		ResultSet resultSet = genericDaoImpl.getResultSet();
+//		preparedStatement = connection
+//				.prepareStatement("select * from employee where employee_email=? and employee_password=?");
+//		preparedStatement.setString(1, userCredential.getUsername());
+//		preparedStatement.setString(2, userCredential.getPassword());
+//		resultSet = preparedStatement.executeQuery();
+//		this.username = userCredential.getUsername();
+//		return userCredential;
+//	}
+
+	public UserCredentialModel UserCredentialModel(UserCredentialModel userCredImpl)
 			throws SQLException, ClassNotFoundException {
 		ResultSet resultSet = genericDaoImpl.getResultSet();
 		PreparedStatement preparedStatement = genericDaoImpl.getPreparestatement();

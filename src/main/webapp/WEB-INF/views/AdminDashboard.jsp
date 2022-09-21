@@ -24,9 +24,11 @@
 </head>
 
 <body>
+
 <a class="btn btn-outline-light btn-lg px-2 float-right" type="submit" href="employeePage/logout">
 <spring:message code="adminDashboard.button.logout" />
 </a>
+<h4 style="float:right">hi  ${sessionUser.username}</h4>
 	<section class="vh-80 gradient-custom">
 		<div class="container px-2 py-4 h-50">
 			<div
@@ -51,7 +53,7 @@
 		</div>
 	</section>
 	<script type="text/javascript"
-		src="<c:url value="/static/js/Script.js" />"></script>
+		src="<c:url value="/static/js/HomeScript.js" />"></script>
 </body>
 
 </html>
