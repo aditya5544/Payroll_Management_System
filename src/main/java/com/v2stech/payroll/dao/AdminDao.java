@@ -105,14 +105,14 @@ public class AdminDao {
 		PreparedStatement preparedStatement = genericDaoImpl.getPreparestatement();
 		ResultSet resultSet = genericDaoImpl.getResultSet();
 		preparedStatement = connection.prepareStatement(
-				"select employee_id,employee_name,designation_type,employee_function_types,pay_slip_month,\n"
-						+ "pay_slip_year,location,employee_joining,employee_PAN,employee_UAN_no,employee_PF_no,employee_Bank_Details,ESI_No,PRAN_NO,total_salary,\n"
-						+ "(total_salary*0.16)Conveyance_Allowance ,(total_salary*0.32)HRA,(total_salary*0.16)Medical_Allowance,\n"
-						+ "(total_salary+(total_salary*0.16)+(total_salary*0.32)+(total_salary*0.16))Total_Earnings,\n"
-						+ "(total_salary*0.12)Deduction,((total_salary+(total_salary*0.16)+(total_salary*0.32)+(total_salary*0.16))-(total_salary*0.12))Net_Amount \n"
-						+ "from employee inner join payslip using(employee_sr) inner join company_details using(company_details_id) \n"
-						+ " inner join designation using(designation_id) inner join company using(company_id)\n"
-						+ "inner join employee_function using (employee_function_id) where employee_sr in(select employee_sr from employee where employee_id=?) and pay_slip_month=? and pay_slip_year=?");
+			"select employee_id,employee_name,designation_type,employee_function_types,pay_slip_month,pay_slip_year,\n"
+			+ "location,employee_joining,employee_PAN,employee_UAN_no,employee_PF_no,employee_Bank_Details,ESI_No,PRAN_NO,total_salary,\n"
+			+ "(total_salary*0.16)Conveyance_Allowance ,(total_salary*0.32)HRA,(total_salary*0.16)Medical_Allowance,\n"
+			+ "(total_salary+(total_salary*0.16)+(total_salary*0.32)+(total_salary*0.16))Total_Earnings,(total_salary*0.12)PF,(total_salary*0.012)ESIC,(200)TAX,\n"
+			+ "((total_salary*0.12)+(total_salary*0.012)+200)Deduction,((total_salary+(total_salary*0.16)+(total_salary*0.32)+(total_salary*0.16))-((total_salary*0.12)+(total_salary*0.012)+200))Net_Amount \n"
+			+ "from employee inner join payslip using(employee_sr) inner join company_details using(company_details_id) \n"
+			+ " inner join designation using(designation_id) inner join company using(company_id)\n"
+			+ "inner join employee_function using (employee_function_id) where employee_sr in(select employee_sr from employee where employee_id=?) and pay_slip_month=? and pay_slip_year=?");
 		preparedStatement.setInt(1, payslipForDatabase.getEmployeeId());
 		preparedStatement.setString(2, payslipForDatabase.getMonth());
 		preparedStatement.setInt(3, payslipForDatabase.getYear());
@@ -142,8 +142,11 @@ public class AdminDao {
 				userData.setHra(resultSet.getDouble(resultSet.getMetaData().getColumnName(17)));
 				userData.setMedicalAllowance(resultSet.getDouble(resultSet.getMetaData().getColumnName(18)));
 				userData.setTotalEarnings(resultSet.getDouble(resultSet.getMetaData().getColumnName(19)));
-				userData.setDeduction(resultSet.getDouble(resultSet.getMetaData().getColumnName(20)));
-				userData.setNetAmount(resultSet.getDouble(resultSet.getMetaData().getColumnName(21)));
+				userData.setPf(resultSet.getString(resultSet.getMetaData().getColumnName(20)));
+				userData.setEsic(resultSet.getString(resultSet.getMetaData().getColumnName(21)));
+				userData.setTax(resultSet.getString(resultSet.getMetaData().getColumnName(22)));
+				userData.setDeduction(resultSet.getDouble(resultSet.getMetaData().getColumnName(23)));
+				userData.setNetAmount(resultSet.getDouble(resultSet.getMetaData().getColumnName(24)));
 			}
 			return userData;
 		}

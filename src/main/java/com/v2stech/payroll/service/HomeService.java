@@ -35,10 +35,10 @@ public class HomeService {
 			UserCredentialModel userDataFromTable = employeeDaoImpl.UserCredentialModel(userCredModel);
 			if (userDataFromTable.getUsername().equals(userCredModel.getUsername())
 					&& userDataFromTable.getPassword().equals(userCredModel.getPassword())) {
-				if (userDataFromTable.getUserType().equalsIgnoreCase("user")) {
-					return "e";
-				} else {
+				if (userDataFromTable.getUserType().equalsIgnoreCase("admin")) {
 					return "a";
+				} else {
+					return "e";
 				}
 			}
 		} else {

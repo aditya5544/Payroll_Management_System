@@ -22,11 +22,11 @@
 </head>
 
 <body>
-<form action="logindata" method=post">
+<form action="logindata" method=post>
     <section class="vh-80 gradient-custom">
         <div class="container py-4 h-50">
           <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5" style="margin-top: 20px;">
               <div class="card bg-dark text-white" style="border-radius: 1rem;">
                 <div class="card-body p-4 text-center">
       

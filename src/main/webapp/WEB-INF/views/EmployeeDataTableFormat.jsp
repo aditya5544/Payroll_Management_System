@@ -30,20 +30,21 @@ body {
 </style>
 <body>
 
-
-
 	<table class="table user-table">
 		<thead>
 			<tr>
 				<th>Month</th>
 				<th>Year</th>
-				<th>Total Salary</th>
-				<th>Conveyance Allowance</th>
+				<th>Basic Salary</th>
+				<th>CON. ALW</th>
 				<th>HRA</th>
-				<th>Medical Allowance</th>
-				<th>Total Earnings</th>
-				<th>Deduction</th>
-				<th>Net Amount</th>
+				<th>MED. ALW</th>
+				<th>Total Earn</th>
+				<th>PF</th>
+				<th>ESIC</th>
+				<th>TAX</th>
+				<th>Total Deduction</th>
+				<th>Net AMT</th>
 			</tr>
 		</thead>
 		<tbody id="employeeList">
@@ -56,6 +57,9 @@ body {
 					<td>${userdata.hra}</td>
 					<td>${userdata.medicalAllowance}</td>
 					<td>${userdata.totalEarnings}</td>
+					<td>${userdata.pf}</td>
+					<td>${userdata.esic}</td>
+					<td>${userdata.tax}</td>
 					<td>${userdata.deduction}</td>
 					<td>${userdata.netAmount}</td>
 				</tr>

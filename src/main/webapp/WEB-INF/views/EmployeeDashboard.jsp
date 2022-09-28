@@ -22,9 +22,12 @@
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
-<body>
-<h4 style="float:right">hi ${sessionUser.username} </h4>
-<a class="btn btn-outline-light btn-lg px-2 float-right" type="submit" href="logout">Log Out</a>
+<body style="margin-top: 20px">
+
+<div>
+	<a class="btn btn-outline-light btn-lg px-2 float-right " type="submit" href="logout" style="margin-left:20px">Log Out</a>
+	<h4  style="float: right; margin-right:20px">Hii ${sessionUser.username}</h4>
+	</div>
 	<section class="vh-80 gradient-custom">
 		<div class="container px-2 py-4 h-50">
 			<div
@@ -33,10 +36,30 @@
 					<div class="card bg-dark text-white" style="border-radius: 1rem;">
 						<div class="card-body p-4 text-center">
 							<div class="mb-md-5 mt-md-4 pb-4">
-								<input type="text" id="Id" value="${userData.id}"
-									class="form-control form-control-lg" /> <br> <input
-									type="text" id="name" value="${userData.name}"
+								<div style="display: flex; flex-direction: row;">
+										<label class="form-label"
+											style="margin-right: 48px;">
+											
+											<spring:message code="lable.id" />
+											
+											</label> <input type="text" id="Id" value="${userData.id}"
 									class="form-control form-control-lg" />
+									</div><br>
+								 
+
+								<div class="form-outline form-white mb-4">
+									<div style="display: flex; flex-direction: row;">
+										<label class="form-label" 
+											style="margin-right: 20px;">
+											
+											<spring:message code="lable.name" />
+											
+											</label> 
+											 <input type="text" id="name" value="${userData.name}"
+									class="form-control form-control-lg" />		
+									</div>
+									<span style="margin-left: 38px; color:red" id="PasswordError" class="error"></sapn>
+								</div>
 									<br>
 								<button class="btn btn-outline-light btn-lg px-2"
 									type="submit" id="viewEmployeeData" >All Pay slips</button>

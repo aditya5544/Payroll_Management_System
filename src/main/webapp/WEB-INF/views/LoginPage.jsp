@@ -21,13 +21,11 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-
 	<section class="vh-80 gradient-custom">
 		<div class="container py-4 h-50">
-
 			<div
 				class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-12 col-md-8 col-lg-6 col-xl-5">
+				<div class="col-12 col-md-8 col-lg-6 col-xl-5" style="margin-top: 55px;">
 					<div class="card bg-dark text-white" style="border-radius: 1rem;">
 						<div class="card-body p-4 text-center">
 							<div class="text-center">
@@ -36,7 +34,7 @@
 							</div>
 							<div class="mb-md-5 mt-md-4 pb-5">
 								<h2 class="fw-bold mb-2 text-uppercase text-white-50 mb-1">
-									<spring:message code="login.header" />
+									
 								</h2>
 								<div class="form-outline form-white mb-4">
 									<div style="display: flex; flex-direction: row;">
@@ -65,7 +63,6 @@
 									</div>
 									<span style="margin-left: 38px; color:red" id="PasswordError" class="error"></sapn>
 								</div>
-
 								<div id="exceptionMessage" class="col-sm-12"
 									style="display: none;">
 									<div class="alert alert-danger">

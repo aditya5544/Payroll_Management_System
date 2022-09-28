@@ -57,10 +57,10 @@ $("#login").on("click", function() {
 		success: function(data) {
 			/*$("body").html(data)*/
 			if (data === "e") {
-				window.location.href = "http://localhost:8080/payroll_Management_System/employeePage/"+email;
+				window.location.href = "http://localhost:8080/payroll_Management_System/employeePanel/"+email;
 			}
 			else {
-				window.location.href = "http://localhost:8080/payroll_Management_System/adminPage/"+email
+				window.location.href = "http://localhost:8080/payroll_Management_System/adminPanel/"+email
 			}
 		},
 		error: function(message) {

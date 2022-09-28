@@ -30,5 +30,8 @@ public class UserData {
 	private double totalEarnings;
 	private double deduction;
 	private double netAmount;
+	private String pf;
+	private String esic;
+	private String tax;
 	
 }

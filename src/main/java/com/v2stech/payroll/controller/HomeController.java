@@ -1,8 +1,6 @@
 package com.v2stech.payroll.controller;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.validation.Valid;
 
@@ -56,7 +54,7 @@ public class HomeController {
 	 * @throws SQLException
 	 * @throws ClassNotFoundException
 	 */
-	@RequestMapping("/adminPage/{email}")
+	@RequestMapping("/adminPanel/{email}")
 	public ModelAndView adminDashBoardPage(ModelAndView modelAndView, UserCredentialModel userModel,
 			@PathVariable String email) throws ClassNotFoundException, SQLException {
 		usermodel = employeeDaoImpl.getData(email);
@@ -67,6 +65,7 @@ public class HomeController {
 	
 	
 	/**
+	 * 
 	 * @work method used to display EMPLOYEE DASHBOARD PAGE after matching employee
 	 *       credentials.
 	 * @param email
@@ -75,7 +74,7 @@ public class HomeController {
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 */
-	@GetMapping("/employeePage/{email}")
+	@GetMapping("/employeePanel/{email}")
 	public ModelAndView customerDetailsPage(@PathVariable String email, ModelAndView modelAndView)
 			throws ClassNotFoundException, SQLException {
 		UserCredentialModel usermodel = employeeDaoImpl.getData(email);

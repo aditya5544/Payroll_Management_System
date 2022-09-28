@@ -28,7 +28,7 @@
 	<div class="btn align-items-center">
 		<a class="btn btn-outline-light btn-lg px-2" type="submit" href="back"><spring:message code="button.back" /></a>
 	</div>
-	<h1 style="text-align: center;"><spring:message code="insert.header" /></h1>
+
 	<section class="vh-80 gradient-custom">
 		<div class="container px-2 py-4 h-50">
 			<div

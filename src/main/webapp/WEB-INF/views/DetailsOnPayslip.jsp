@@ -5,120 +5,165 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Pal slip Structure</title>
-<link rel="stylesheet" href="<c:url value="/static/css/PayslipStruture.css" />" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <div class="main">
+    <div class="main bg-white text-center">
         <div class="formtable1">
-            <h1>V2STech Solutions Pvt Ltd</h1>
-            <h2>Payslip</h2>
-            <table>
-                <tr>
-                    <td>
-                        <strong><label> Id</label></strong>
-                        <input type="text" id="empid" name="empid" value="${empData.employeeId}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Name </label></strong>
-                        <input type="text" id="empname" name="empname" value="${empData.employeeName}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Designation</label></strong>
-                        <input type="text" id="desig" name="desig" value="${empData.designationType}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>Function</label></strong>
-                        <input type="text" id="function" name="function" value="${empData.functionTypes}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Month</label></strong>
-                        <input type="text" id="month" name="month" value="${empData.paySlipMonth}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">year </label></strong>
-                        <input type="text" id="year" name="year" value="${empData.paySlipYear}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>Location</label></strong>
-                        <input type="text" id="location" name="location" value="${empData.location}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Joing Date</label></strong>
-                        <input type="text" id="joingdate" name="joingdate" value="${empData.employeeJoining}"/>
-                    </td>
-                    <td>
-                       <strong> <label for="fname">Pan </label></strong>
-                        <input type="text" id="pan" name="pan" value="${empData.panNo}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>UAN No</label></strong>
-                        <input type="text" id="uan" name="uan" value="${empData.uanNo}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">PF No</label></strong>
-                        <input type="text" id="pf" name="pf" value="${empData.pfNo}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Bank Details </label></strong>
-                        <input type="text" id="bank" name="bank" value="${empData.bankDetails}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>ESI No</label></strong>
-                        <input type="text" id="esino" name="esino" value="${empData.esiNo}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">PRAN No</label></strong>
-                        <input type="text" id="pranno" name="pranno" value="${empData.pranNo}"/>
-                    </td>
-                    <td>
-                       <strong><label for="fname">Total Salary</label></strong>
-                        <input type="text" id="totalsal" name="totalsal" value="${empData.totalSalary}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>Conveyance ALW</label></strong>
-                        <input type="text" id="conallow" name="conallow" value="${empData.conveyanceAllowance}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">HRA</label></strong>
-                        <input type="text" id="hra" name="hra" value="${empData.hra}"/>
-                    </td>
-                    <td>
-                       <strong> <label for="fname">Medical ALW</label></strong>
-                        <input type="text" id="medallow" name="medallow" value="${empData.medicalAllowance}"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <strong><label>Total Earnings</label></strong>
-                        <input type="text" id="earn" name="earn" value="${empData.totalEarnings}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Deduction</label></strong>
-                        <input type="text" id="deduction" name="deduction" value="${empData.deduction}"/>
-                    </td>
-                    <td>
-                        <strong><label for="fname">Net Amount</label></strong>
-                        <input type="text" id="netamt" name="netamt" value="${empData.netAmount}"/>
-                    </td>
-                </tr>
-            </table>
-        </div>
-    </div>
-    <a class="btn btn-lg px-2" type="submit" href="backToadminSearch">Back</a>
-</body>
+            <div class="headerbody">
+                <h1>V2STech Solutions Pvt Ltd</h1>
+                <h2>Payslip</h2>
+            </div>
+            <div class="container text-center">
+                <div class="form-group row">
+                    <label for="id" class="col-sm-1 col-form-label">Id</label>
+                    <div class="col-sm-3">
+                        <input type="id" class="form-control" id="empid" value="${empData.employeeId}">
+                    </div>
+
+                    <label for="name" class="col-sm-1 col-form-label">Name</label>
+                    <div class="col-sm-3">
+                        <input type="name" class="form-control" id="empname" value="${empData.employeeName}">
+                    </div>
+
+                    <label for="desig" class="col-sm-1 col-form-label">Designation</label>
+                    <div class="col-sm-3">
+                        <input type="desig" class="form-control" id="desig" value="${empData.designationType}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="function" class="col-sm-1 col-form-label">Function</label>
+                    <div class="col-sm-3">
+                        <input type="fun" class="form-control" id="function" value="${empData.functionTypes}">
+                    </div>
+
+                    <label for="month" class="col-sm-1 col-form-label">Month</label>
+                    <div class="col-sm-3">
+                        <input type="monthId" class="form-control" id="month" value="${empData.paySlipMonth}">
+                    </div>
+
+                    <label for="year" class="col-sm-1 col-form-label">Year</label>
+                    <div class="col-sm-3">
+                        <input type="year" class="form-control" id="year" value="${empData.paySlipYear}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="location" class="col-sm-1 col-form-label">Location</label>
+                    <div class="col-sm-3">
+                        <input type="location" class="form-control" id="location" value="${empData.location}">
+                    </div>
+
+                    <label for="jdate" class="col-sm-1 col-form-label">Joining Date</label>
+                    <div class="col-sm-3">
+                        <input type="jdate" class="form-control" id="joingdate" value="${empData.employeeJoining}">
+                    </div>
+
+                    <label for="pan" class="col-sm-1 col-form-label">Pan</label>
+                    <div class="col-sm-3">
+                        <input type="pan" class="form-control" id="pan" value="${empData.panNo}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="uan" class="col-sm-1 col-form-label">UAN No</label>
+                    <div class="col-sm-3">
+                        <input type="uan" class="form-control" id="uan" value="${empData.uanNo}">
+                    </div>
+
+                    <label for="pfno" class="col-sm-1 col-form-label">PF No</label>
+                    <div class="col-sm-3">
+                        <input type="pfno" class="form-control" id="pf" value="${empData.pfNo}">
+                    </div>
+
+                    <label for="bankDetail" class="col-sm-1 col-form-label">Bank Details</label>
+                    <div class="col-sm-3">
+                        <input type="bankDetail" class="form-control" id="bank" value="${empData.bankDetails}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="esiNo" class="col-sm-1 col-form-label">ESI No</label>
+                    <div class="col-sm-3">
+                        <input type="esiNo" class="form-control" id="esino" value="${empData.esiNo}">
+                    </div>
+
+                    <label for="pran" class="col-sm-1 col-form-label">PRAN NO</label>
+                    <div class="col-sm-3">
+                        <input type="pran" class="form-control" id="pranno" value="${empData.pranNo}">
+                    </div>
+
+                    <label for="basicSalary" class="col-sm-1 col-form-label">Basic Salary</label>
+                    <div class="col-sm-3">
+                        <input type="basicSalary" class="form-control" id="totalsal" value="${empData.totalSalary}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="convALW" class="col-sm-1 col-form-label">Conv. ALW</label>
+                    <div class="col-sm-3">
+                        <input type="convALW" class="form-control" id="conallow" value="${empData.conveyanceAllowance}">
+                    </div>
+
+                    <label for="hra" class="col-sm-1 col-form-label">HRA</label>
+                    <div class="col-sm-3">
+                        <input type="hra" class="form-control" id="hra" value="${empData.hra}">
+                    </div>
+
+                    <label for="medALW" class="col-sm-1 col-form-label">Med. ALW</label>
+                    <div class="col-sm-3">
+                        <input type="medALW" class="form-control" id="medallow" value="${empData.medicalAllowance}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="totalEarn" class="col-sm-1 col-form-label">Total Earnings</label>
+                    <div class="col-sm-3">
+                        <input type="toralEarn" class="form-control" id="earn" value="${empData.totalEarnings}">
+                    </div>
+
+                    <label for="pf" class="col-sm-1 col-form-label">PF Contribution</label>
+                    <div class="col-sm-3">
+                        <input type="pf" class="form-control" id="pfContro" value="${empData.pf}" >
+                    </div>
+
+                    <label for="esic" class="col-sm-1 col-form-label">ESIC</label>
+                    <div class="col-sm-3">
+                        <input type="esic" class="form-control" id="esic" value="${empData.esic}">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="tax" class="col-sm-1 col-form-label">TAX</label>
+                    <div class="col-sm-3">
+                        <input type="tax" class="form-control" id="earn" value="${empData.tax}">
+                    </div>
+
+                    <label for="deduction" class="col-sm-1 col-form-label">Deduction</label>
+                    <div class="col-sm-3">
+                        <input type="deduction" class="form-control" id="deduction" value="${empData.deduction}">
+                    </div>
+
+                    <label for="netAmt" class="col-sm-1 col-form-label">Net Amount</label>
+                    <div class="col-sm-3">
+                        <input type="netAmt" class="form-control" id="netamt" value="${empData.netAmount}">
+                    </div>
+                </div>
+
+
+            </div>
+
 </body>
 </html>
 

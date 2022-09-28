@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.v2stech.payroll.dao.GenericDao;
 import com.v2stech.payroll.exception.AlreadExistException;
 import com.v2stech.payroll.exception.DataNotExistedException;
 import com.v2stech.payroll.model.PayslipForDatabase;
@@ -24,12 +23,12 @@ import com.v2stech.payroll.service.HomeService;
 /**
  * @author Aditya Kadam
  */
+
 @RestController
 public class AdminController {
 	@Autowired
 	private HomeService serviceImpl;
-	@Autowired
-	private GenericDao genericDaoImpl;
+
 	@Autowired
 	private AdminService adminServiceImpl;
 
@@ -67,6 +66,7 @@ public class AdminController {
 	@GetMapping("/insertionList")
 	public PayslipForDatabase showingInsertedDataOnViewButtonClick()
 			throws ClassNotFoundException, SQLException  {
+		
 		return adminServiceImpl.viewInsertedData();
 	}
 
@@ -163,7 +163,7 @@ public class AdminController {
 	 * @throws SQLException
 	 * @throws DataNotExistedException
 	 */
-	@GetMapping("/accountantInsertion")
+	@GetMapping("adminPanel/accountantInsertion")
 	public ModelAndView accountantInsertion(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
@@ -181,7 +181,7 @@ public class AdminController {
 	 * @throws SQLException
 	 * @throws DataNotExistedException
 	 */
-	@GetMapping("/accountantUpdation")
+	@GetMapping("adminPanel/accountantUpdation")
 	public ModelAndView accountantUpdation(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
@@ -199,7 +199,7 @@ public class AdminController {
 	 * @throws SQLException
 	 * @throws DataNotExistedException
 	 */
-	@GetMapping("/accountantSearch")
+	@GetMapping("adminPanel/accountantSearch")
 	public ModelAndView accountantSearch(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
@@ -217,7 +217,7 @@ public class AdminController {
 	 * @throws SQLException
 	 * @throws DataNotExistedException
 	 */
-	@GetMapping("/accountantDeletion")
+	@GetMapping("adminPanel/accountantDeletion")
 	public ModelAndView accountantDeletion(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
@@ -227,16 +227,7 @@ public class AdminController {
 
 
 	
-	/**
-	 * @work Method used for go to Admin Dashboard page.
-	 * @param modelAndView 
-	 * @return ModelAndView
-	 */
-	@GetMapping("/back")
-	public ModelAndView backToAdminDashbaord(ModelAndView modelAndView) {
-		modelAndView.setViewName("AdminDashboard");
-		return modelAndView;
-	}
+	
 	
 	/**
 	 * @work method used to go back to admin search page
@@ -247,7 +238,7 @@ public class AdminController {
 	 * @throws DataNotExistedException
 	 */
 	
-	@GetMapping("/backToadminSearch")
+	@GetMapping("adminPanel/backToadminSearch")
 	public ModelAndView backToAdminSearchPage(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
@@ -260,9 +251,21 @@ public class AdminController {
 	 * @param modelAndView
 	 * @return modelAndView
 	 */
-	@GetMapping("adminPage/employeePage/logout")
+	@GetMapping("adminPanel/dashboard/logout")
 	public ModelAndView backToLoginPage(ModelAndView modelAndView) {
 		modelAndView.setViewName("LoginPage");
+		return modelAndView;
+	}
+	
+	
+	/**
+	 * @work Method used for go to Admin Dashboard page.
+	 * @param modelAndView 
+	 * @return ModelAndView
+	 */
+	@GetMapping("adminPanel/back")
+	public ModelAndView backToAdminDashbaord(ModelAndView modelAndView) {
+		modelAndView.setViewName("AdminDashboard");
 		return modelAndView;
 	}
 

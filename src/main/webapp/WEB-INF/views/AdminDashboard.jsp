@@ -23,12 +23,13 @@
 
 </head>
 
-<body>
+<body style="margin-top: 20px">
 
-<a class="btn btn-outline-light btn-lg px-2 float-right" type="submit" href="employeePage/logout">
+<a class="btn btn-outline-light btn-lg px-2 float-right" type="submit" href="dashboard/logout" style="margin-left:20px">
 <spring:message code="adminDashboard.button.logout" />
 </a>
-<h4 style="float:right">hi  ${sessionUser.username}</h4>
+<h4 style="float:right ">Hi ${sessionUser.username}</h4>
+
 	<section class="vh-80 gradient-custom">
 		<div class="container px-2 py-4 h-50">
 			<div
