@@ -5,12 +5,12 @@ import java.sql.SQLException;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -23,7 +23,8 @@ import com.v2stech.payroll.service.HomeService;
 /**
  * @author Aditya Kadam
  */
-@RestController
+@Controller
+
 @SessionAttributes("sessionUser")
 public class HomeController {
 
@@ -55,7 +56,7 @@ public class HomeController {
 	 * @throws ClassNotFoundException
 	 */
 	@RequestMapping("/adminPanel/{email}")
-	public ModelAndView adminDashBoardPage(ModelAndView modelAndView, UserCredentialModel userModel,
+	public ModelAndView adminDashBoardPage( ModelAndView modelAndView, UserCredentialModel userModel,
 			@PathVariable String email) throws ClassNotFoundException, SQLException {
 		usermodel = employeeDaoImpl.getData(email);
 		modelAndView.addObject("sessionUser", usermodel);

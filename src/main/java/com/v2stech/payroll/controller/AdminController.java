@@ -3,13 +3,13 @@ package com.v2stech.payroll.controller;
 import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.v2stech.payroll.exception.AlreadExistException;
@@ -24,7 +24,7 @@ import com.v2stech.payroll.service.HomeService;
  * @author Aditya Kadam
  */
 
-@RestController
+@Controller
 public class AdminController {
 	@Autowired
 	private HomeService serviceImpl;
@@ -34,7 +34,7 @@ public class AdminController {
 
 	
 	/**
-	 * @work Method to insert data through INSERT Button from admin insert page.
+	 * Insert data through INSERT Button from admin insert page.
 	 * @mapping PostMapping
 	 * @param payslip with @RequestBody to take data from request.
 	 * @return String
@@ -57,7 +57,7 @@ public class AdminController {
 
 
 	/**
-	 * @work Method to view inserted data through VIEW button from Admin insert Page.
+	 * View inserted data through VIEW button from Admin insert Page.
 	 * @mapping GetMapping
 	 * @return method
 	 * @throws ClassNotFoundException
@@ -66,13 +66,12 @@ public class AdminController {
 	@GetMapping("/insertionList")
 	public PayslipForDatabase showingInsertedDataOnViewButtonClick()
 			throws ClassNotFoundException, SQLException  {
-		
 		return adminServiceImpl.viewInsertedData();
 	}
 
 	
 	/**
-	 * @work method to show data on payslip structure page after clicking search button.
+	 * Show data on payslip structure page after clicking search button.
 	 * @mapping PostMapping
 	 * @method searchedDataintoPayslip-
 	 * @param payslipModel
@@ -98,7 +97,7 @@ public class AdminController {
 	
 
 	/**
-	 * @work Delete data after clicking delete button from admin dashboard.
+	 * Delete data after clicking delete button from admin dashboard.
 	 * @mapping PostMapping
 	 * @param payslipModel used @RequestBody to take data from request.
 	 * @throws ClassNotFoundException
@@ -113,20 +112,30 @@ public class AdminController {
 //	}
 	
 
-	//Delet functionality Trying with pathvarible
+	/**
+	 * Delete functionality Trying with pathvarible
+	 * @param empId
+	 * @param month
+	 * @param year
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws AlreadExistException
+	 * @throws DataNotExistedException
+	 */
 	@DeleteMapping ("/dataDeletion/{empId}/{month}/{year}")
 	public void deletion(@PathVariable String empId,@PathVariable String month, @PathVariable String year) throws ClassNotFoundException, SQLException, AlreadExistException, DataNotExistedException {
 		adminServiceImpl.deleteData(empId,month,year);
 	}
 	
-
-	/*
-	 * Method used get salary from inserted Data from Admin update page.
-	 * Return type is Object.
-	 * @GetMapping get page.
-	 * @RequestBody to get Data from Payload/request.
-	 * Throws ClassNotFoundExceptn, SQLEXception.
+	/**
+	 * Get salary from Admin update page.
+	 * @param payslipModel
+	 * @return
+	 * @throws ClassNotFoundException
+	 * @throws SQLException
+	 * @throws DataNotExistedException
 	 */
+	
 	@PostMapping("/dataForSalary")
 	public PayslipForDatabase getSalaryofInsertedData(@RequestBody PayslipForDatabase payslipModel)
 			throws ClassNotFoundException, SQLException, DataNotExistedException {
@@ -151,14 +160,11 @@ public class AdminController {
 		return "Updated Successfully!!";
 	}
 	
-
-
-	/** 
-	 * @work show insertion page after clicking INSERT button from admin dashboard
-	 * @method employeesNameList
-	 * @method getCurrntYear
+	
+	/**
+	 * Show Insertion page after clicking Insert Button from Admin Dashboard.
 	 * @param modelAndView
-	 * @return page through modelAndView
+	 * @return ModelAndView
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
 	 * @throws DataNotExistedException
@@ -172,7 +178,7 @@ public class AdminController {
 	}
 	
 	/**
-	 * @work show updation page after clicking UPDATE button from admin dashboard
+	 * Show updation page after clicking UPDATE button from admin dashboard
 	 * @method employeesNameList
 	 * @method getCurrntYear
 	 * @param modelAndView
@@ -190,7 +196,7 @@ public class AdminController {
 	}
 
 	/**
-	 * @work show Search page after clicking Search button from admin dashboard
+	 * Show Search page after clicking Search button from admin dashboard.
 	 * @method employeesNameList
 	 * @method getCurrntYear
 	 * @param modelAndView
@@ -208,7 +214,7 @@ public class AdminController {
 	}
 
 	/**
-	 * @work show Delete page after clicking DELETE button from admin dashboard
+	 * Show Delete page after clicking DELETE button from admin dashboard
 	 * @method employeesNameList
 	 * @method getCurrntYear
 	 * @param modelAndView
@@ -227,10 +233,8 @@ public class AdminController {
 
 
 	
-	
-	
 	/**
-	 * @work method used to go back to admin search page
+	 * Method used to go back to admin search page
 	 * @param modelAndView
 	 * @return modelAndView
 	 * @throws ClassNotFoundException
@@ -239,7 +243,7 @@ public class AdminController {
 	 */
 	
 	@GetMapping("adminPanel/backToadminSearch")
-	public ModelAndView backToAdminSearchPage(ModelAndView modelAndView) throws ClassNotFoundException, SQLException, DataNotExistedException {
+	public ModelAndView backToAdminSearchPage(ModelAndView modelAndView ,PayslipForDatabase payslipModel) throws ClassNotFoundException, SQLException, DataNotExistedException {
 		modelAndView.addObject("userList", adminServiceImpl.employeesNameList());
 		modelAndView.addObject("dataYear", adminServiceImpl.getCurrntYear());
 		modelAndView.setViewName("AdminSearch");
@@ -247,7 +251,7 @@ public class AdminController {
 	}
 
 	/**
-	 * @work method used to logout and go back to login page
+	 * For logout and go back to login page
 	 * @param modelAndView
 	 * @return modelAndView
 	 */
@@ -259,7 +263,7 @@ public class AdminController {
 	
 	
 	/**
-	 * @work Method used for go to Admin Dashboard page.
+	 * Method used for go to Admin Dashboard page.
 	 * @param modelAndView 
 	 * @return ModelAndView
 	 */

@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.v2stech.payroll.dao.AdminDao;
 import com.v2stech.payroll.exception.AlreadExistException;
@@ -115,7 +116,7 @@ public class AdminService {
 
 
 	/**
-	 * @work return object  to show current year into dropdown
+	 * @work return object to show current year into dropdown
 	 * @return object
 	 * @throws ClassNotFoundException
 	 * @throws SQLException
@@ -130,5 +131,16 @@ public class AdminService {
 		return adminDaoImpl.getSalary(payslip);
 	}
 
+	public ModelAndView checker(UserCredentialModel userCread,ModelAndView modelandView)  {
+		if (!userCread.getUserType().equalsIgnoreCase("Admin")) {
+			modelandView.setViewName("LoginPage");
+			return modelandView;
+		}
+		return null;
+	}
+	
+	
+	
+	
 
 }
